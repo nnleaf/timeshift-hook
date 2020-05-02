@@ -28,7 +28,7 @@ readonly TIME=$(get_property "time" "integer")
 
 find /run/timeshift/backup/timeshift/snapshots-ondemand -mmin -"$TIME" | grep $(date +%Y-%m-%d)
 if [ $? -eq 0 ]; then
-    echo Last timeshift backup was less than 60 minutes ago, aborting backup
+    echo Last timeshift backup was less than "$TIME" minutes ago, aborting backup
 else
     /usr/bin/timeshift --create --comments "$COMMENT"
 fi
