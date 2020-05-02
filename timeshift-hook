@@ -1,0 +1,8 @@
+[Trigger]
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Timeshift snapshot pre-pacman-Syu
+When = PreTransaction
+Exec = etc/pacman.d/timeshift-hook/timeshift-hook.sh
