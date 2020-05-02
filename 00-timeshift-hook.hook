@@ -1,8 +1,10 @@
 [Trigger]
 Operation = Upgrade
+Type = Package
 Target = *
 
 [Action]
-Description = Timeshift snapshot pre-pacman-Syu
+Description = Timeshift snapshot pre-update
 When = PreTransaction
 Exec = etc/pacman.d/timeshift-hook/timeshift-hook.sh
+AbortOnFail
