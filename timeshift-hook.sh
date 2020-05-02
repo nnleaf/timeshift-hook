@@ -5,9 +5,9 @@ user="$1"
 #Configuration
 readonly CONF_FILE=/etc/pacman.d/timeshift-hook/timeshift-hook.conf
 readonly COMMENT=$(get_property "comment" "string")
-readonly TIME=$(get_propety "time" "string")
+readonly TIME=$(get_propety "time" "integer")
 
-find /run/timeshift/backup/timeshift/snapshots-ondemand -mmin -"$time" | grep $(date +%Y-%m-%d)
+find /run/timeshift/backup/timeshift/snapshots-ondemand -mmin -"$TIME" | grep $(date +%Y-%m-%d)
 if [ $? -eq 0 ]; then
     echo Last timeshift backup was less than 60 minutes ago, aborting backup
 else
