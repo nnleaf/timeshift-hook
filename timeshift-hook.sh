@@ -1,4 +1,11 @@
 #!/bin/bash
+#     ////     //  ////     //
+#    // //    //  // //    //
+#   //  //   //  //  //   //
+#  //   //  //  //   //  //
+# //    // //  //    // //
+#//     ////  //     ////
+#
 #Timeshift Hook allowing a pre-update snapshot
 user="$1"
 get_property() {
