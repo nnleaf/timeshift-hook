@@ -1,9 +1,15 @@
 #!/bin/bash
 #Timeshift Hook allowing a pre-update snapshot
 user="$1"
-find /mnt/x1_backup/timeshift/snapshots-ondemand -mmin -60 | grep $(date +%Y-%m-%d)
+
+#Configuration
+readonly CONF_FILE=/etc/pacman.d/timeshift-hook/timeshift-hook.conf
+readonly COMMENT=$(get_property "comment" "string"
+readonly TIME=$(get_propety "time" "string"
+
+find /run/timeshift/backup/timeshift/snapshots-ondemand -mmin -"$time" | grep $(date +%Y-%m-%d)
 if [ $? -eq 0 ]; then
     echo Last timeshift backup was less than 60 minutes ago, aborting backup
 else
-    /usr/bin/timeshift --create --comments "timeshift--hook_snapshot"
+    /usr/bin/timeshift --create --comments "$COMMENT"
 fi
